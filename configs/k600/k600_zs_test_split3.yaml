@@ -1,0 +1,27 @@
+seed: 1024
+data:
+    dataset: k600
+    modality: video
+    num_segments: 8
+    seg_length: 1
+    batch_size: 16
+    workers: 8
+    num_classes: 160
+    image_tmpl: 'img_{:05d}.jpg'
+    val_root: 'path/to/dataset'
+    val_list: lists/k600_test/k160_test_split3.txt
+    label_list: lists/k600_test/k160_labels_split3.csv
+    index_bias: 1
+    input_size: 224
+network:
+    arch: ViT-L/14  # ViT-B/32 # ViT-L/14 
+    init: True
+    drop_out: 0.0 
+    emb_dropout: 0.0
+    sim_header: Transf # Transf, None
+    interaction: DP    # DP
+    temporal_layer: 6
+    num_experts: 4  #  >1: MoTE; <=1: mlp     
+logging:
+    print_freq: 10
+    eval_freq: 1

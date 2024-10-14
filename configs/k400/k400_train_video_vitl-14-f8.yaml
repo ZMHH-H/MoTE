@@ -1,0 +1,50 @@
+resume: 
+pretrain:
+seed: 1024
+data:
+    dataset: k400
+    modality: video
+    num_segments: 8
+    seg_length: 1       # no use
+    batch_size: 48
+    workers: 8
+    num_classes: 400
+    image_tmpl: 'img_{:05d}.jpg' # no used
+    train_root: val_root: 'path/to/dataset'
+    train_list: 'lists/k400/trainlist.txt' 
+    val_root: val_root: 'path/to/dataset'
+    val_list: 'lists/k400/vallist.txt'
+    label_list: 'lists/k400/kinetics_400_labels.csv'
+    input_size: 224
+    random_shift: True
+    output_path: exps_MoTE
+network:
+    arch: ViT-L/14      #ViT-B/32 ViT-B/16
+    init: True
+    tm: False           # no use
+    drop_out: 0.0 
+    emb_dropout: 0.0
+    sim_header: Transf  # [Transf, None] 'Transf'：6-layer temporal transformer  'None': mean temporal pooling
+    interaction: DP     # [DP] 'DP': mean temporal pooling
+    joint_st: False     # whether use joint space-time attention in the transformer (default: False)
+    drop: 0      
+    fix_text: True
+    fix_video: False
+    temporal_layer: 6
+    num_experts: 4      #  >1: MoTE; <=1: mlp
+solver:
+    type: cosine
+    epochs: 20
+    start_epoch: 0
+    epoch_offset: 0
+    optim: adamw
+    lr: 5.e-5
+    lr_warmup_step: 5
+    weight_decay: 0.2
+    loss_type: CE
+    evaluate: False     # only run evaluation
+    clip_ratio: 0.06
+    grad_accumulation_steps: 1
+logging:
+    print_freq: 10
+    eval_freq: 1
