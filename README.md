@@ -1,20 +1,20 @@
-<h2> [NeurIPS'2024] MoTE: Reconciling Generalization with Specialization for Visual-Language to Video Knowledge Transfer </h2>
+<h2> <center> [NeurIPS' 2024] MoTE: Reconciling Generalization with Specialization for Visual-Language to Video Knowledge Transfer </center> </h2>
 
 [![Conference](https://img.shields.io/badge/NeurIPS-2024-slateblue)](https://nips.cc/Conferences/2024)
 
-[![Paper](http://img.shields.io/badge/Paper-arxiv.2301.00182-b31b1b.svg)]()
+[![Paper](https://img.shields.io/badge/arXiv-2410.10589-orange)](https://arxiv.org/abs/2410.10589)
 
 </div>
 
 ## Overview
 
-Official implementation of our  **MoTE**, an effective Visual-Language to video knowledge transfer framework that enjoys both superior generalization and specialization, striking an optimal trade-off between close-set and zero-shot performance in one unified model.
+Official implementation of our **MoTE**, an effective Visual-Language to video knowledge transfer framework that enjoys both superior generalization and specialization, striking an optimal trade-off between close-set and zero-shot performance in one unified model.
 
 <img src="figure/MoTE.png" alt="vis" style="zoom:90%;" />
 
 
 
-## :mailbox_with_mail:Requirements
+## :mailbox_with_mail: Requirements
 
 
 - PyTorch (2.0.1 recommended)
@@ -50,20 +50,18 @@ By default, we decode the videos on the fly using [decord](https://github.com/dm
 
 (Optional) We can also extract videos into frames for fast reading. Please refer to [BIKE](https://github.com/whwu95/BIKE/blob/main/README.md) repo for the detaied steps.
 
-
-
 ## :cat: Model Zoo
 
-We train one unified model for both close-set and zero-shot video recognition tasks. The corresponding results, models, and configs are listed in the table below.
+We train one unified model for both close-set and zero-shot video recognition tasks. The corresponding results, checkpoints, and configs are listed in the table below.
 
 ### Close-set performance (Kinetics-400)
 
-| Architecture | Input  | Views | Top-1(%) | Top-5(%) | checkpoint |                         config                          |
-| :----------: | :----: | :---: | :------: | :------: | :--------: | :-----------------------------------------------------: |
-|   ViT-B/16   | 8x224  |  1x1  |   81.8   |   95.9   |            | [config](configs/k400/k400_train_video_vitb-16-f8.yaml) |
-|   ViT-B/16   | 8x224  |  4x3  |   83.0   |   96.3   |            | [config](configs/k400/k400_train_video_vitb-16-f8.yaml) |
-|   ViT-L/14   | 8x224  |  4x3  |   86.8   |   97.5   |            | [config](configs/k400/k400_train_video_vitl-14-f8.yaml) |
-|   ViT-L/14   | 16x224 |  4x3  |   87.2   |   97.7   |            |                            -                            |
+| Architecture | Input  | Views | Top-1(%) | Top-5(%) |                          checkpoint                          |                         config                          |
+| :----------: | :----: | :---: | :------: | :------: | :----------------------------------------------------------: | :-----------------------------------------------------: |
+|   ViT-B/16   | 8x224  |  1x1  |   81.8   |   95.9   | [MoTE_B16](https://github.com/ZMHH-H/MoTE/releases/download/v1.0/MoTE_B16.pt) | [config](configs/k400/k400_train_video_vitb-16-f8.yaml) |
+|   ViT-B/16   | 8x224  |  4x3  |   83.0   |   96.3   | [MoTE_B16](https://github.com/ZMHH-H/MoTE/releases/download/v1.0/MoTE_B16.pt) | [config](configs/k400/k400_train_video_vitb-16-f8.yaml) |
+|   ViT-L/14   | 8x224  |  4x3  |   86.8   |   97.5   | [MoTE_L14](https://github.com/ZMHH-H/MoTE/releases/download/v1.0/MoTE_L14.pt) | [config](configs/k400/k400_train_video_vitl-14-f8.yaml) |
+|   ViT-L/14   | 16x224 |  4x3  |   87.2   |   97.7   |                              -                               |                            -                            |
 
 ### Zero-shot performance (UCF-101 & HMDB-51 & k600)
 
@@ -74,7 +72,8 @@ We train one unified model for both close-set and zero-shot video recognition ta
 
 
 
-## :speedboat:Training
+## :speedboat: Training
+
 By default , we train our model on Kinetics-400 with 3 GPUs in a *Single Machine*.
 
 ```bash
@@ -82,9 +81,7 @@ By default , we train our model on Kinetics-400 with 3 GPUs in a *Single Machine
 bash scripts/run_train.sh configs/k400/k400_train_video_vitl-14-f8.yaml
 ```
 
-
-
-## :ocean:Testing
+## :ocean: Testing
 **Close-set evaluation.** We adopt single-view (1 x 1 views)  or multi-view (4 x 3 views)  evaluation protocol with 8 frames per view.
 
 ```bash
@@ -109,14 +106,18 @@ bash scripts/run_test_zeroshot.sh configs/hmdb51/hmdb_split1.yaml MoTE_L14.pt --
 bash scripts/run_test_zeroshot.sh configs/k600/k600_zs_test_split1.yaml MoTE_L14.pt --test_clips 3
 ```
 
-
 ## 📌 BibTeX & Citation
 
  If our work is useful to you, please consider citing our paper using the following BibTeX entry.
 
 
 ```bibtex
-
+@Article{MoTE,
+  title={MoTE: Reconciling Generalization with Specialization for Visual-Language to Video Knowledge Transfer},
+  author={Zhu, Minghao and Wang, Zhengpu and Hu, Mengxian and Dang, Ronghao and Lin, Xiao and Zhou, Xun and Liu, Chengju and Chen, Qijun},
+  journal={arXiv preprint arXiv:2410.10589},
+  year={2024}
+}
 ```
 
 ## :memo: Acknowledgement
