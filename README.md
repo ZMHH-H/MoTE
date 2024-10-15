@@ -74,7 +74,7 @@ We train one unified model for both close-set and zero-shot video recognition ta
 
 ## :speedboat: Training
 
-By default , we train our model on Kinetics-400 with 3 GPUs in a *Single Machine*.
+By default , we train our model on Kinetics-400 in a *Single Machine*.
 
 ```bash
 # We train the ViT-L/14 model using 6 layers of MoTE, with 4 temporal experts per layer.
