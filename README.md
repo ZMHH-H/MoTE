@@ -112,10 +112,10 @@ bash scripts/run_test_zeroshot.sh configs/k600/k600_zs_test_split1.yaml MoTE_L14
 
 
 ```bibtex
-@Article{MoTE,
-  title={MoTE: Reconciling Generalization with Specialization for Visual-Language to Video Knowledge Transfer},
+@inproceedings{MoTE,
+  title={MoTE: Reconciling generalization with specialization for visual-language to video knowledge transfer},
   author={Zhu, Minghao and Wang, Zhengpu and Hu, Mengxian and Dang, Ronghao and Lin, Xiao and Zhou, Xun and Liu, Chengju and Chen, Qijun},
-  journal={arXiv preprint arXiv:2410.10589},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
   year={2024}
 }
 ```
